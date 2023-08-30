@@ -48,7 +48,7 @@ public class CourseServiceImpl implements CourseService{
                         e.setId(course.getId());
 
         }))
-                .flatMap(courseRepository::insert)
+                .flatMap(courseRepository::save)
                 .map(EntityDTOUtils::toCourseResponseDTO);
     }
 
