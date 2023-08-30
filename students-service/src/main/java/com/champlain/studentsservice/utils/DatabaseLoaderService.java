@@ -19,36 +19,36 @@ public class DatabaseLoaderService implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception{
         Student student1 = Student
-                .builder().
-                firstName("Micheal")
-                .lastName("Jordan")
+                .builder()
                 .studentId(UUID.randomUUID().toString())
+                .firstName("Micheal")
+                .lastName("Jordan")
                 .program("Computer Science")
                 .build();
 
 
         Student student2 = Student
-                .builder().
-                firstName("Mohammed")
-                .lastName("Ali")
+                .builder()
                 .studentId(UUID.randomUUID().toString())
-                .program("Pure and Applied")
+                .firstName("Cristiano")
+                .lastName("Ronaldo")
+                .program("Computer Science")
                 .build();
 
         Student student3 = Student
-                .builder().
-                firstName("Cristiano")
-                .lastName("Ronaldo")
+                .builder()
                 .studentId(UUID.randomUUID().toString())
-                .program("Graphics and Media")
+                .firstName("Muhammad")
+                .lastName("Ali")
+                .program("Computer Science")
                 .build();
 
         Student student4 = Student
-                .builder().
-                firstName("Tom")
-                .lastName("Brady")
+                .builder()
                 .studentId(UUID.randomUUID().toString())
-                .program("Math and Computer Science")
+                .firstName("Micheal")
+                .lastName("Phelps")
+                .program("Computer Science")
                 .build();
 
 

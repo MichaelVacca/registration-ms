@@ -27,13 +27,32 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/{studentId}")
+    public Mono<ResponseEntity<StudentResponseDTO>> getStudentById(@PathVariable String studentId){
+        return studentService.getStudentById(studentId)
+                .map(s -> ResponseEntity.ok().body(s))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 
     @PostMapping()
-    public Mono<ResponseEntity<StudentResponseDTO>> addStudent(@RequestBody Mono<StudentRequestDTO> studentRequestDTO) throws URISyntaxException {
-
-        return studentService.addStudent(studentRequestDTO).map(s -> ResponseEntity.status(HttpStatus.CREATED).body(s))
+    public Mono<ResponseEntity<StudentResponseDTO>> addStudent(@RequestBody Mono<StudentRequestDTO> studentRequestBody) throws URISyntaxException {
+        return studentService.addStudent(studentRequestBody).map(s -> ResponseEntity.status(HttpStatus.CREATED).body(s))
                 .defaultIfEmpty(ResponseEntity.badRequest().build());
-
     }
+
+    @PutMapping("/{studentId}")
+    public Mono<ResponseEntity<StudentResponseDTO>> updateStudent(@PathVariable String studentId,@RequestBody Mono<StudentRequestDTO> studentRequestBody){
+        return this.studentService.updateStudentById(studentRequestBody,studentId)
+                .map(student -> ResponseEntity.ok().body(student))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{studentId}")
+    public Mono<ResponseEntity<Void>> deleteStudent(@PathVariable String studentId){
+        return studentService.deleteStudentById(studentId)
+                .then(Mono.just(ResponseEntity.noContent().<Void>build()))
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
 
 }

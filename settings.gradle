@@ -1,3 +1,3 @@
 include 'courses-service'
-include 'sections-service'
+include 'enrollments-service'
 include 'students-service'

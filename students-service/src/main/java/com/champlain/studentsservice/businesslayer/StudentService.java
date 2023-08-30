@@ -9,7 +9,10 @@ import reactor.core.publisher.Mono;
 public interface StudentService {
 
 Flux<StudentResponseDTO> getAllStudents();
+Mono<StudentResponseDTO> getStudentById(String studentId);
 Mono<StudentResponseDTO> addStudent(Mono<StudentRequestDTO> studentRequestDTO);
+Mono<StudentResponseDTO> updateStudentById(Mono<StudentRequestDTO> studentRequestDTO,String studentId);
+Mono<Void> deleteStudentById(String studentId);
 
 
 }

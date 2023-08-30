@@ -1,0 +1,40 @@
+server:
+  port: 7003
+
+logging:
+  level:
+    root: INFO
+    com.champlain: DEBUG
+
+spring:
+  config:
+    activate:
+      on-profile: default
+
+app:
+  students-service:
+    host: localhost
+    port: 7001
+  courses-service:
+    host: localhost
+    port: 7002
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/enrollments
+    username: user
+    password: pwd
+
+app:
+  students-service:
+    host: students-service
+    port: 8080
+  courses-service:
+    host: courses-service
+    port: 8080
