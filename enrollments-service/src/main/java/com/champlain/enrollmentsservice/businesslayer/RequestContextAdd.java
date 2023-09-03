@@ -22,7 +22,4 @@ public class RequestContextAdd {
         this.enrollmentRequestDTO = enrollmentRequestDTO;
     }
 
-
-
-
 }
