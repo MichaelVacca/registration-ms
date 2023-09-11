@@ -69,7 +69,11 @@ public class CourseServiceImpl implements CourseService{
         }
         return courseRepository.findCourseByCourseId(courseId)
                 .switchIfEmpty(Mono.error(new NotFoundException("No course with this courseId was found: " + courseId)))
-                .flatMap(courseRepository::delete);
+                //new code
+                .flatMap(course -> {
+                    courseRepository.delete(course);
+                    return Mono.empty();
+                });
     }
 
 }
