@@ -3,6 +3,7 @@ package com.champlain.enrollmentsservice.domainclientlayer;
 
 
 import com.champlain.enrollmentsservice.utils.exceptions.NotFoundException;
+import lombok.Generated;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -31,6 +32,7 @@ public class CourseClient {
     }
 
     public Mono<CourseResponseDTO> getCourseByCourseId(final String courseId){
+
             return this.webClient
                     .get()
                     .uri("/{courseId}", courseId)
@@ -47,6 +49,7 @@ public class CourseClient {
                     .bodyToMono(CourseResponseDTO.class);
         }
 
+        @Generated
         public static String generateUUIDString(){
             return UUID.randomUUID().toString();
         }
